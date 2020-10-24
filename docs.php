@@ -3,11 +3,11 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require 'inc/compress.php';  
-
-include_once 'inc/own.php';  # propore info
-include_once 'inc/offices.php';  #Bureaux
-include_once 'inc/shoppers.php';  #Boutiques
+require 'libs/autoload.php';
+#require libs/custom/
+foreach (glob('libs/custom/*.php') as $GlobRequire) { include_once $GlobRequire; }
+#configuration
+foreach (glob('inc/*.php') as $GlobConfig) { include_once $GlobConfig; }
 
 $lang_finales = 'langs/'.$website['info']['langs']['files'].'.php';
 if (file_exists($lang_finales)) {
